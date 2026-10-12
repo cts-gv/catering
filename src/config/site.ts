@@ -23,7 +23,7 @@ export const siteConfig = {
   hero: {
     // Video file: put your video in /public/hero-video.mp4 (or change path below)
     // Supported formats: .mp4, .webm
-    videoSrc: "public/hero-video.mp4",
+    videoSrc: "hero-video.mp4",
     posterImage: "https://images.pexels.com/photos/8448178/pexels-photo-8448178.jpeg?auto=compress&cs=tinysrgb&w=1920",
     title: "Gabe the Taco Guy",
     subtitle: "Private Chef & Catering for Weddings, Quinceañeras, Corporate Events & Intimate Gatherings",
