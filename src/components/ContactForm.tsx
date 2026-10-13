@@ -112,7 +112,7 @@ export default function ContactForm() {
 
         <div className="grid lg:grid-cols-5 gap-6 lg:gap-8">
           {/* Quote display panel */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2 order-2 lg:order-1">
             <div className="bg-[#1A1A1A] rounded-2xl p-7 h-full flex flex-col justify-center">
               <h3 className="font-serif text-xl font-bold text-white mb-2">Instant Quote Estimate</h3>
               <p className="text-white/60 text-sm mb-6 leading-relaxed">
@@ -153,7 +153,7 @@ export default function ContactForm() {
           </div>
 
           {/* Contact form */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-3 order-1 lg:order-2">
             <form
               onSubmit={handleSubmit}
               className="bg-white rounded-2xl p-7 shadow-md space-y-5"
