@@ -42,7 +42,7 @@ Deno.serve(async (req: Request) => {
       event_date: event_date || null,
       guests: guests || null,
       message: message || null,
-      quote_estimate: quote_estimate || null,
+      quote_estimate: quote_estimate || null,\n      phone_communication_consent,\n      email_communication_consent,\n      special_offers_consent,
     });
 
     if (dbError) {

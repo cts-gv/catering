@@ -23,6 +23,9 @@ export default function ContactForm() {
     guests: '',
     message: '',
   });
+  const [phoneConsent, setPhoneConsent] = useState(false);
+  const [emailConsent, setEmailConsent] = useState(false);
+  const [specialOffersConsent, setSpecialOffersConsent] = useState(false);
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
 
@@ -41,9 +44,9 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.name || !form.email || !form.phone || !form.eventType) {
+    if (!form.name || !form.email || !form.phone || !form.eventType || !phoneConsent || !emailConsent) {
       setStatus('error');
-      setErrorMsg('Please fill in all required fields.');
+      setErrorMsg('Please fill in all required fields and agree to phone and email communication.');
       return;
     }
 
@@ -68,6 +71,9 @@ export default function ContactForm() {
             guests: form.guests ? parseInt(form.guests, 10) : null,
             message: form.message || null,
             quote_estimate: quote,
+            phone_communication_consent: phoneConsent,
+            email_communication_consent: emailConsent,
+            special_offers_consent: specialOffersConsent,
           }),
         }
       );
@@ -91,6 +97,9 @@ export default function ContactForm() {
         guests: '',
         message: '',
       });
+      setPhoneConsent(false);
+      setEmailConsent(false);
+      setSpecialOffersConsent(false);
     } catch {
       setStatus('error');
       setErrorMsg('Something went wrong. Please try again or call us directly.');
@@ -212,6 +221,22 @@ export default function ContactForm() {
                     placeholder="jane@email.com"
                     type="email"
                   />
+
+                  <div className="space-y-3 rounded-xl border border-[#E0D5C3] bg-[#FFFCF7] p-4">
+                    <p className="text-sm font-semibold text-[#1A1A1A]">Communication preferences</p>
+                    <label className="flex items-start gap-3 text-sm leading-relaxed text-[#4A4A4A]">
+                      <input type="checkbox" checked={phoneConsent} onChange={(e) => setPhoneConsent(e.target.checked)} required className="mt-1 h-4 w-4 accent-[#B8742C]" />
+                      <span>I agree to be contacted by phone or text about this inquiry and event arrangements. <span className="text-red-600">*</span></span>
+                    </label>
+                    <label className="flex items-start gap-3 text-sm leading-relaxed text-[#4A4A4A]">
+                      <input type="checkbox" checked={emailConsent} onChange={(e) => setEmailConsent(e.target.checked)} required className="mt-1 h-4 w-4 accent-[#B8742C]" />
+                      <span>I agree to receive emails about this inquiry, quotes, and event arrangements. <span className="text-red-600">*</span></span>
+                    </label>
+                    <label className="flex items-start gap-3 text-sm leading-relaxed text-[#4A4A4A]">
+                      <input type="checkbox" checked={specialOffersConsent} onChange={(e) => setSpecialOffersConsent(e.target.checked)} className="mt-1 h-4 w-4 accent-[#B8742C]" />
+                      <span>Yes, I’d also like occasional emails about monthly specials, seasonal offers, and promotions. This is optional and I can unsubscribe at any time.</span>
+                    </label>
+                  </div>
 
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>

@@ -4,6 +4,7 @@ import About from '@/components/About';
 import Stats from '@/components/Stats';
 import EventPortfolio from '@/components/EventPortfolio';
 import WhyUs from '@/components/WhyUs';
+import MonthlySpecial from '@/components/MonthlySpecial';
 import ContactForm from '@/components/ContactForm';
 import Footer from '@/components/Footer';
 
@@ -17,6 +18,7 @@ export default function App() {
         <Stats />
         <EventPortfolio />
         <WhyUs />
+        <MonthlySpecial />
         <ContactForm />
       </main>
       <Footer />
