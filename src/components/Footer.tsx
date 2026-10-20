@@ -56,14 +56,14 @@ export default function Footer() {
               &copy; {new Date().getFullYear()} {siteConfig.business.name}. All rights reserved.
             </p>
             <p className="text-white/40 text-xs">
-              Site made spicy by:{" "}
+              🌶️Site made spicy by🌶️:{" "}
               <a 
                 href="https://ctechsolution.tech" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="hover:underline transition-colors hover:text-white/70"
                 >
-                Community tech Solutions
+                Community Tech Solutions
               </a>
             </p>
           </div>
