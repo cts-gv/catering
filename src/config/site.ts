@@ -63,19 +63,19 @@ export const siteConfig = {
     },
     {
       title: "Custom Meal Prep",
-      image: "https://images.pexels.com/photos/16451001/pexels-photo-16451001.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: "https://images.pexels.com/photos/4929677/pexels-photo-4929677.jpeg",
       description: "Tailored to your exact dietary goals and packed with bold, unforgettable flavor. Eat clean without ever compromising on taste.",
       stat: "10,000+ meals prepped",
     },
     {
       title: "Private/Personal Chef",
-      image: "https://images.pexels.com/photos/18749086/pexels-photo-18749086.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: "https://images.pexels.com/photos/30892994/pexels-photo-30892994.jpeg",
       description: "Bespoke culinary experiences crafted in your home. From intimate dinner parties to weekly custom menus, featuring global flavors tailored precisely to your palate.",
       stat: "300+ plated dinners",
     },
     {
       title: "Private Event Bar Services",
-      image: "https://images.pexels.com/photos/12032536/pexels-photo-12032536.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: "https://images.pexels.com/photos/36244494/pexels-photo-36244494.jpeg",
       description: "Tailored mixology, curated drink menus, and a seamless bar experience for birthdays, anniversaries, and milestone celebrations.",
       stat: "Tailored drinks for your event",
     },
