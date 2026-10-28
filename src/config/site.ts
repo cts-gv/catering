@@ -6,14 +6,14 @@
 export const siteConfig = {
   // ---- BUSINESS INFO ----
   business: {
-    name: "Gabe the Taco Guy",
+    name: "Chef Who Drinks Whiskey",
     tagline: "Private Chef & Catering",
     phone: "(555) 123-4567",
     email: "hello@gabethetacoguy.com",
     instagram: "https://instagram.com",
     facebook: "https://facebook.com",
     yearsInBusiness: 12,
-    location: "Serving the greater metro area",
+    location: "Serving the Yakima Valley, Tri-Cities and surrounding areas",
   },
 
   // ---- HERO SECTION ----
@@ -26,7 +26,7 @@ export const siteConfig = {
     videoSrc: "hero-video.mp4",
     posterImage: "hero-poster.jpg",
     title: "Gabe the Taco Guy",
-    subtitle: "Private Chef & Catering for Weddings, Quinceañeras, Corporate Events & Intimate Gatherings",
+    subtitle: "Private Chef & Catering for Meal Preps, Weddings, Quinceañeras, Corporate Events & Intimate Gatherings",
     ctaText: "Get a Free Quote",
     ctaScrollTarget: "contact",
   },
@@ -45,7 +45,7 @@ export const siteConfig = {
 
   // ---- STATS (Years in business, events served, etc.) ----
   stats: [
-    { value: "12+", label: "Years in Business" },
+    { value: "12+", label: "Years of Experience" },
     { value: "850+", label: "Events Catered" },
     { value: "50,000+", label: "Guests Served" },
     { value: "100%", label: "Made From Scratch" },
