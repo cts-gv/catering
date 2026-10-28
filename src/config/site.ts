@@ -34,7 +34,7 @@ export const siteConfig = {
   // ---- ABOUT SECTION ----
   // Change the chef photo by placing an image in /public or update the URL below
   about: {
-    title: "Meet Gabe",
+    title: "Meet The Chef",
     image: "https://images.pexels.com/photos/4253315/pexels-photo-4253315.jpeg?auto=compress&cs=tinysrgb&w=800",
     paragraphs: [
       "For over a decade, Gabe has been bringing the vibrant flavors of authentic Mexican street food to events across the region. What started as a small taco stand at local farmers' markets grew into a full-service catering operation serving hundreds of events.",
@@ -56,25 +56,25 @@ export const siteConfig = {
   // or placing files in /public and referencing them as "/your-image.jpg"
   eventTypes: [
     {
-      title: "Weddings",
+      title: "Events",
       image: "https://images.pexels.com/photos/37976951/pexels-photo-37976951.jpeg?auto=compress&cs=tinysrgb&w=800",
       description: "Elegant catering tailored to your special day, from taco bars to full plated dinners.",
       stat: "200+ weddings catered",
     },
     {
-      title: "Quinceañeras",
+      title: "Meal Prep",
       image: "https://images.pexels.com/photos/16451001/pexels-photo-16451001.jpeg?auto=compress&cs=tinysrgb&w=800",
       description: "Celebrate this milestone with vibrant flavors and a feast your guests will never forget.",
       stat: "150+ quinceañeras served",
     },
     {
-      title: "Corporate Events",
+      title: "Private/Personal Chef",
       image: "https://images.pexels.com/photos/18749086/pexels-photo-18749086.jpeg?auto=compress&cs=tinysrgb&w=800",
       description: "Professional catering for lunches, galas, and company celebrations of any scale.",
       stat: "300+ corporate events",
     },
     {
-      title: "Private Parties",
+      title: "Bartending",
       image: "https://images.pexels.com/photos/12032536/pexels-photo-12032536.jpeg?auto=compress&cs=tinysrgb&w=800",
       description: "Birthday parties, anniversaries, and celebrations with custom menus for your crew.",
       stat: "200+ parties catered",
