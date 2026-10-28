@@ -6,7 +6,7 @@
 export const siteConfig = {
   // ---- BUSINESS INFO ----
   business: {
-    name: "Chef Who Drinks Whiskey",
+    name: "Gabe the Taco Guy",
     tagline: "Private Chef & Catering",
     phone: "(555) 123-4567",
     email: "hello@gabethetacoguy.com",
