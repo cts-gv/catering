@@ -150,9 +150,9 @@ export const siteConfig = {
   quotePricing: {
     event_catering: { label: "Event Catering", perGuest: 25, baseFee: 200, minGuests: 25, maxGuests: 250 },
     meal_prep: { label: "Custom Meal Preps", perGuest: 15, baseFee: 50 },
-    personal_chef: { label: "Personal Chef Experience", perGuest: 45, baseFee: 150 },
-    private_chef: { label: "Private Chef Experience", perGuest: 65, baseFee: 300 },
-    bar_services: { label: "Private Event Bar Services", perGuest: 18, baseFee: 250 },
+    personal_chef: { label: "Personal Chef Experience", perGuest: 45, baseFee: 150, minGuests: 2, maxGuests: 25 },
+    private_chef: { label: "Private Chef Experience", perGuest: 65, baseFee: 300, minGuests: 2, maxGuests: 25 },
+    bar_services: { label: "Private Event Bar Services", perGuest: 18, baseFee: 250, maxGuests: 250 },
     other: { label: "Other", perGuest: 24, baseFee: 150 },
   },
 
