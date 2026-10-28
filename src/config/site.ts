@@ -133,15 +133,27 @@ export const siteConfig = {
     },
   ],
 
+  // ---- FORMSPREE (contact form submissions) ----
+  // 1. Create a form at https://formspree.io and copy its endpoint URL.
+  // 2. Paste it below (it looks like https://formspree.io/f/xyzabcde).
+  formspree: {
+    endpoint: "https://formspree.io/f/YOUR_FORM_ID",
+  },
+
   // ---- QUOTE GENERATOR SETTINGS ----
-  // Base pricing per guest for each event type (used by the quote calculator)
+  // Each entry here becomes an option in the Event Type dropdown, in this order.
+  //   label    = text shown in the dropdown (and in the Formspree email)
+  //   perGuest = price per guest / per person
+  //   baseFee  = flat fee added to every quote
+  //   minGuests / maxGuests = optional guest limits for that option
+  // Quote = (perGuest x number of guests) + baseFee
   quotePricing: {
-    wedding: { perGuest: 28, baseFee: 200 },
-    corporate: { perGuest: 22, baseFee: 150 },
-    quinceanera: { perGuest: 25, baseFee: 200 },
-    private_party: { perGuest: 20, baseFee: 100 },
-    private_chef: { perGuest: 65, baseFee: 300 },
-    other: { perGuest: 24, baseFee: 150 },
+    event_catering: { label: "Event Catering", perGuest: 25, baseFee: 200, minGuests: 25, maxGuests: 250 },
+    meal_prep: { label: "Custom Meal Preps", perGuest: 15, baseFee: 50 },
+    personal_chef: { label: "Personal Chef Experience", perGuest: 45, baseFee: 150 },
+    private_chef: { label: "Private Chef Experience", perGuest: 65, baseFee: 300 },
+    bar_services: { label: "Private Event Bar Services", perGuest: 18, baseFee: 250 },
+    other: { label: "Other", perGuest: 24, baseFee: 150 },
   },
 
   // ---- FOOTER ----
