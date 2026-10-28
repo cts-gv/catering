@@ -103,7 +103,7 @@ export const siteConfig = {
   whyUs: [
     {
       icon: "ChefHat",
-      title: "Private Chef Experience",
+      title: "Private/Personal Chef Experience",
       description: "Gabe personally cooks at your event, bringing the kitchen to you. Watch your meal being crafted in real time.",
     },
     {
@@ -114,12 +114,12 @@ export const siteConfig = {
     {
       icon: "Users",
       title: "Any Size, Any Venue",
-      description: "From 10 guests to 500+, we scale seamlessly. Backyard gatherings, banquet halls, corporate offices — we bring the flavor anywhere.",
+      description: "From 2 guests to 200+, we scale seamlessly. Backyard gatherings, banquet halls, corporate offices — we bring the flavor anywhere.",
     },
     {
       icon: "Flame",
-      title: "Authentic Mexican Flavors",
-      description: "Family recipes passed down generations. Real al pastor from the trompo, hand-pressed tortillas, salsas with real fire.",
+      title: "Authentic Global Flavors",
+      description: "From authentic al pastor and hand-pressed tortillas to rich Mediterranean, Asian, and Southern comfort culinary traditions.",
     },
     {
       icon: "CalendarHeart",
