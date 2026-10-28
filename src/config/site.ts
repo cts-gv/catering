@@ -56,28 +56,28 @@ export const siteConfig = {
   // or placing files in /public and referencing them as "/your-image.jpg"
   eventTypes: [
     {
-      title: "Events",
+      title: "Elevated Event Catering",
       image: "https://images.pexels.com/photos/37976951/pexels-photo-37976951.jpeg?auto=compress&cs=tinysrgb&w=800",
-      description: "Elegant catering tailored to your special day, from taco bars to full plated dinners.",
-      stat: "200+ weddings catered",
+      description: "From soulful Southern comfort and Mediterranean spreads to rich Asian-inspired plates, colorful Mexican dishes, and formal plated dinners, crafted exclusively for your celebration.",
+      stat: "200+ events catered",
     },
     {
-      title: "Meal Prep",
+      title: "Custom Meal Prep",
       image: "https://images.pexels.com/photos/16451001/pexels-photo-16451001.jpeg?auto=compress&cs=tinysrgb&w=800",
-      description: "Celebrate this milestone with vibrant flavors and a feast your guests will never forget.",
-      stat: "150+ quinceañeras served",
+      description: "Tailored to your exact dietary goals and packed with bold, unforgettable flavor. Eat clean without ever compromising on taste.",
+      stat: "10,000+ meals prepped",
     },
     {
       title: "Private/Personal Chef",
       image: "https://images.pexels.com/photos/18749086/pexels-photo-18749086.jpeg?auto=compress&cs=tinysrgb&w=800",
-      description: "Professional catering for lunches, galas, and company celebrations of any scale.",
-      stat: "300+ corporate events",
+      description: "Bespoke culinary experiences crafted in your home. From intimate dinner parties to weekly custom menus, featuring global flavors tailored precisely to your palate.",
+      stat: "300+ plated dinners",
     },
     {
-      title: "Bartending",
+      title: "Private Event Bar Services",
       image: "https://images.pexels.com/photos/12032536/pexels-photo-12032536.jpeg?auto=compress&cs=tinysrgb&w=800",
-      description: "Birthday parties, anniversaries, and celebrations with custom menus for your crew.",
-      stat: "200+ parties catered",
+      description: "Tailored mixology, curated drink menus, and a seamless bar experience for birthdays, anniversaries, and milestone celebrations.",
+      stat: "Tailored drink menus designed just for your event",
     },
   ],
 
