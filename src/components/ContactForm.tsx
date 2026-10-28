@@ -13,13 +13,6 @@ const eventOptions = (
   Object.entries(siteConfig.quotePricing) as [EventKey, (typeof siteConfig.quotePricing)[EventKey]][]
 ).map(([value, pricing]) => ({ value, label: pricing.label }));
 
-// Builds a note like "Event Catering requires a minimum of 25 guests." from the site.ts settings
-const minimumNotes = (
-  Object.values(siteConfig.quotePricing) as ({ label: string } & GuestLimits)[]
-)
-  .filter((p) => p.minGuests !== undefined)
-  .map((p) => `${p.label} requires a minimum of ${p.minGuests} guests.`);
-
 export default function ContactForm() {
   const [form, setForm] = useState({
     name: '',
@@ -291,11 +284,6 @@ export default function ContactForm() {
                           ))}
                         </select>
                       </div>
-                      {minimumNotes.length > 0 && (
-                        <p className="text-xs text-[#B8742C] mt-1.5 leading-relaxed">
-                          {minimumNotes.join(' ')}
-                        </p>
-                      )}
                     </div>
 
                     <Field
