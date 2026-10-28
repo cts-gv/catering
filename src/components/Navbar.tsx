@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Menu, X, Flame } from 'lucide-react';
+import { Menu, X, Wine } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 
 const navLinks = [
@@ -37,7 +37,7 @@ export default function Navbar() {
           onClick={() => handleClick('#hero')}
           className="flex items-center gap-2 group"
         >
-          <Flame
+          <Wine
             className="w-7 h-7 sm:w-8 sm:h-8 text-[#B8742C] transition-transform group-hover:scale-110"
             strokeWidth={2.2}
           />
