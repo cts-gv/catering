@@ -4,14 +4,21 @@ import { siteConfig } from '@/config/site';
 
 type EventKey = keyof typeof siteConfig.quotePricing;
 
-const eventOptions: { value: EventKey; label: string }[] = [
-  { value: 'wedding', label: 'Wedding' },
-  { value: 'corporate', label: 'Corporate Event' },
-  { value: 'quinceanera', label: 'Quinceañera' },
-  { value: 'private_party', label: 'Private Party' },
-  { value: 'private_chef', label: 'Private Chef Experience' },
-  { value: 'other', label: 'Other' },
-];
+type GuestLimits = { minGuests?: number; maxGuests?: number };
+
+const getLimits = (eventType: EventKey | ''): GuestLimits =>
+  eventType ? (siteConfig.quotePricing[eventType] as GuestLimits) : {};
+
+const eventOptions = (
+  Object.entries(siteConfig.quotePricing) as [EventKey, (typeof siteConfig.quotePricing)[EventKey]][]
+).map(([value, pricing]) => ({ value, label: pricing.label }));
+
+// Builds a note like "Event Catering requires a minimum of 25 guests." from the site.ts settings
+const minimumNotes = (
+  Object.values(siteConfig.quotePricing) as ({ label: string } & GuestLimits)[]
+)
+  .filter((p) => p.minGuests !== undefined)
+  .map((p) => `${p.label} requires a minimum of ${p.minGuests} guests.`);
 
 export default function ContactForm() {
   const [form, setForm] = useState({
@@ -29,17 +36,35 @@ export default function ContactForm() {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
 
+  const limits = getLimits(form.eventType);
+
   const quote = useMemo(() => {
     if (!form.eventType || !form.guests) return null;
     const pricing = siteConfig.quotePricing[form.eventType as EventKey];
     if (!pricing) return null;
     const guestCount = parseInt(form.guests, 10);
     if (isNaN(guestCount) || guestCount < 1) return null;
+    const { minGuests, maxGuests } = pricing as GuestLimits;
+    if (minGuests !== undefined && guestCount < minGuests) return null;
+    if (maxGuests !== undefined && guestCount > maxGuests) return null;
     return pricing.perGuest * guestCount + pricing.baseFee;
   }, [form.eventType, form.guests]);
 
   const handleChange = (field: keyof typeof form, value: string) => {
-    setForm((prev) => ({ ...prev, [field]: value }));
+    setForm((prev) => {
+      const next = { ...prev, [field]: value };
+      if (field === 'eventType') {
+        // Start the guest count at the minimum and keep it within the allowed range
+        const { minGuests, maxGuests } = getLimits(value as EventKey | '');
+        const current = parseInt(next.guests, 10);
+        if (minGuests !== undefined && (isNaN(current) || current < minGuests)) {
+          next.guests = String(minGuests);
+        } else if (maxGuests !== undefined && current > maxGuests) {
+          next.guests = String(maxGuests);
+        }
+      }
+      return next;
+    });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -50,41 +75,49 @@ export default function ContactForm() {
       return;
     }
 
+    const { minGuests, maxGuests } = getLimits(form.eventType);
+    const guestCount = parseInt(form.guests, 10);
+    if (minGuests !== undefined && (isNaN(guestCount) || guestCount < minGuests)) {
+      setStatus('error');
+      setErrorMsg(`${siteConfig.quotePricing[form.eventType as EventKey].label} requires a minimum of ${minGuests} guests.`);
+      return;
+    }
+    if (maxGuests !== undefined && guestCount > maxGuests) {
+      setStatus('error');
+      setErrorMsg(`${siteConfig.quotePricing[form.eventType as EventKey].label} allows a maximum of ${maxGuests} guests. Please call us for larger events.`);
+      return;
+    }
+
     setStatus('submitting');
     setErrorMsg('');
 
     try {
-      const response = await fetch(
-        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-booking-email`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
-          },
-          body: JSON.stringify({
-            name: form.name,
-            email: form.email,
-            phone: form.phone,
-            event_type: form.eventType,
-            event_date: form.eventDate || null,
-            guests: form.guests ? parseInt(form.guests, 10) : null,
-            message: form.message || null,
-            quote_estimate: quote,
-            phone_communication_consent: phoneConsent,
-            email_communication_consent: emailConsent,
-            special_offers_consent: specialOffersConsent,
-          }),
-        }
-      );
+      const eventLabel = siteConfig.quotePricing[form.eventType as EventKey].label;
+
+      const response = await fetch(siteConfig.formspree.endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          event_type: eventLabel,
+          event_date: form.eventDate || 'Not provided',
+          guests: form.guests || 'Not provided',
+          message: form.message || 'Not provided',
+          quote_estimate: quote !== null ? `$${quote.toLocaleString()}` : 'Not calculated',
+          phone_communication_consent: phoneConsent ? 'Yes' : 'No',
+          email_communication_consent: emailConsent ? 'Yes' : 'No',
+          special_offers_consent: specialOffersConsent ? 'Yes' : 'No',
+          _subject: `New ${eventLabel} inquiry from ${form.name}`,
+        }),
+      });
 
       if (!response.ok) {
         throw new Error('Request failed');
-      }
-
-      const data = await response.json();
-      if (data.error) {
-        throw new Error(data.error);
       }
 
       setStatus('success');
@@ -115,7 +148,7 @@ export default function ContactForm() {
             Plan Your Event
           </h2>
           <p className="text-[#4A4A4A] text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Tell us about your event and get an instant quote. We'll send a confirmation email with your details right away.
+            Tell us about your event and get an instant quote. We'll review your request and get back to you shortly.
           </p>
         </div>
 
@@ -172,7 +205,7 @@ export default function ContactForm() {
                   <CheckCircle2 className="w-16 h-16 text-green-600 mx-auto mb-4" />
                   <h3 className="font-serif text-2xl font-bold text-[#1A1A1A] mb-2">Inquiry Submitted!</h3>
                   <p className="text-[#6A6A6A] text-sm leading-relaxed max-w-sm mx-auto">
-                    We've saved your details and sent a confirmation email. Gabe will personally review your request and respond within 24 hours.
+                    We've received your details. Gabe will personally review your request and respond within 24 hours.
                   </p>
                   <button
                     type="button"
@@ -258,6 +291,11 @@ export default function ContactForm() {
                           ))}
                         </select>
                       </div>
+                      {minimumNotes.length > 0 && (
+                        <p className="text-xs text-[#B8742C] mt-1.5 leading-relaxed">
+                          {minimumNotes.join(' ')}
+                        </p>
+                      )}
                     </div>
 
                     <Field
@@ -277,6 +315,14 @@ export default function ContactForm() {
                     onChange={(v) => handleChange('guests', v)}
                     placeholder="e.g. 75"
                     type="number"
+                    min={limits.minGuests}
+                    max={limits.maxGuests}
+                    required={limits.minGuests !== undefined}
+                    hint={
+                      limits.minGuests !== undefined || limits.maxGuests !== undefined
+                        ? `${limits.minGuests !== undefined ? `Minimum ${limits.minGuests}` : ''}${limits.minGuests !== undefined && limits.maxGuests !== undefined ? ', ' : ''}${limits.maxGuests !== undefined ? `maximum ${limits.maxGuests}` : ''} guests for this event type.`
+                        : undefined
+                    }
                   />
 
                   <div>
@@ -327,9 +373,12 @@ type FieldProps = {
   placeholder: string;
   type: string;
   required?: boolean;
+  min?: number;
+  max?: number;
+  hint?: string;
 };
 
-function Field({ icon, label, value, onChange, placeholder, type, required }: FieldProps) {
+function Field({ icon, label, value, onChange, placeholder, type, required, min, max, hint }: FieldProps) {
   return (
     <div>
       <label className="block text-sm font-medium text-[#3A3A3A] mb-1.5">
@@ -345,8 +394,11 @@ function Field({ icon, label, value, onChange, placeholder, type, required }: Fi
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         required={required}
+        min={min}
+        max={max}
         className="w-full bg-[#F8F5F0] border border-[#E0D5C3] rounded-xl px-4 py-3 text-sm text-[#1A1A1A] focus:outline-none focus:ring-2 focus:ring-[#B8742C]/40 focus:border-[#B8742C] transition-all"
       />
+      {hint && <p className="text-xs text-[#6A6A6A] mt-1.5">{hint}</p>}
     </div>
   );
 }
