@@ -77,7 +77,7 @@ export const siteConfig = {
       title: "Private Event Bar Services",
       image: "https://images.pexels.com/photos/12032536/pexels-photo-12032536.jpeg?auto=compress&cs=tinysrgb&w=800",
       description: "Tailored mixology, curated drink menus, and a seamless bar experience for birthdays, anniversaries, and milestone celebrations.",
-      stat: "Tailored drink menus designed just for your event",
+      stat: "Tailored drinks for your event",
     },
   ],
 
