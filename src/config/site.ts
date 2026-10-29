@@ -137,7 +137,7 @@ export const siteConfig = {
   // 1. Create a form at https://formspree.io and copy its endpoint URL.
   // 2. Paste it below (it looks like https://formspree.io/f/xyzabcde).
   formspree: {
-    endpoint: "https://formspree.io/f/YOUR_FORM_ID",
+    endpoint: "https://formspree.io/f/xjyyolqz",
   },
 
   // ---- QUOTE GENERATOR SETTINGS ----
