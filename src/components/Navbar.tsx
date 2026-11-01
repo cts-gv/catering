@@ -5,6 +5,7 @@ import { siteConfig } from '@/config/site';
 const navLinks = [
   { label: 'About', href: '#about' },
   { label: 'Events', href: '#events' },
+  { label: 'Gallery', href: '#gallery' },
   { label: 'Why Us', href: '#why-us' },
   { label: 'Contact', href: '#contact' },
 ];
