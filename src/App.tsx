@@ -3,6 +3,7 @@ import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Stats from '@/components/Stats';
 import EventPortfolio from '@/components/EventPortfolio';
+import Gallery from '@/components/Gallery';
 import WhyUs from '@/components/WhyUs';
 import MonthlySpecial from '@/components/MonthlySpecial';
 import ContactForm from '@/components/ContactForm';
@@ -17,6 +18,7 @@ export default function App() {
         <About />
         <Stats />
         <EventPortfolio />
+        <Gallery />
         <WhyUs />
         <MonthlySpecial />
         <ContactForm />
