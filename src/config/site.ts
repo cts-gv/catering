@@ -23,7 +23,7 @@ export const siteConfig = {
   hero: {
     // Video file: put your video in /public/hero-video.mp4 (or change path below)
     // Supported formats: .mp4, .webm
-    videoSrc: "hero-720p.mp4",
+    videoSrc: "hero-video.mp4",
     posterImage: "hero-poster.jpg",
     title: "Chef Who Drinks Whiskey",
     subtitle: "Private Chef & Catering for Meal Preps, Weddings, Quinceañeras, Corporate Events & Intimate Gatherings",
@@ -40,6 +40,31 @@ export const siteConfig = {
       "For over a decade, Gabe has been bringing the vibrant flavors of authentic Mexican street food to events across the region. What started as a small taco stand at local farmers' markets grew into a full-service catering operation serving hundreds of events.",
       "From intimate dinners for ten to grand celebrations for five hundred, Gabe brings the same passion, quality ingredients, and attention to detail to every plate. Every tortilla is hand-pressed, every salsa made from scratch, every dish plated with care.",
       "Whether you're planning the wedding of your dreams, a corporate gala, a quinceañera, or an intimate evening with close friends, Gabe crafts a menu that tells your story through food.",
+    ],
+    // Chef video shown under the story. Place the file in /public.
+    // Leave `src` empty ("") to hide the video block entirely.
+    // `poster` is optional — the cover image shown before the visitor hits play.
+    video: {
+      src: "chef-story.mp4",
+      poster: "chef-story-poster.jpg",
+      title: "Watch Gabe in the kitchen",
+      caption: "A look at how Gabe cooks, and why every event gets his full attention.",
+    },
+  },
+
+  // ---- PHOTO GALLERY (bento grid) ----
+  // Exactly 5 images, placed in /public. The first image is the large feature tile,
+  // so put the strongest photo first. Update `alt` text to describe each photo.
+  gallery: {
+    eyebrow: "Recent Work",
+    heading: "A Taste of Our Events",
+    intro: "A few highlights from recent catering jobs.",
+    images: [
+      { src: "gallery-1.jpg", alt: "Catered event spread prepared by Chef Gabe" },
+      { src: "gallery-2.jpg", alt: "Plated dish from a catered event" },
+      { src: "gallery-3.jpg", alt: "Buffet setup at a catered event" },
+      { src: "gallery-4.jpg", alt: "Guests enjoying food at a catered event" },
+      { src: "gallery-5.jpg", alt: "Chef Gabe serving at a catered event" },
     ],
   },
 
