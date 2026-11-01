@@ -23,7 +23,7 @@ export const siteConfig = {
   hero: {
     // Video file: put your video in /public/hero-video.mp4 (or change path below)
     // Supported formats: .mp4, .webm
-    videoSrc: "hero-720p.mp4",
+    videoSrc: "hero-video.mp4",
     posterImage: "hero-poster.jpg",
     title: "Chef Who Drinks Whiskey",
     subtitle: "Private Chef & Catering for Meal Preps, Weddings, Quinceañeras, Corporate Events & Intimate Gatherings",
@@ -35,7 +35,7 @@ export const siteConfig = {
   // Change the chef photo by placing an image in /public or update the URL below
   about: {
     title: "Meet The Chef",
-    image: "meet-the-chef.jpg",
+    image: "https://images.pexels.com/photos/4253315/pexels-photo-4253315.jpeg?auto=compress&cs=tinysrgb&w=800",
     paragraphs: [
       "For over a decade, Gabe has been bringing the vibrant flavors of authentic Mexican street food to events across the region. What started as a small taco stand at local farmers' markets grew into a full-service catering operation serving hundreds of events.",
       "From intimate dinners for ten to grand celebrations for five hundred, Gabe brings the same passion, quality ingredients, and attention to detail to every plate. Every tortilla is hand-pressed, every salsa made from scratch, every dish plated with care.",
@@ -117,8 +117,11 @@ export const siteConfig = {
     monthLabel: "October • Fall Gatherings",
     title: "Make Your Fall Gathering Delicious",
     description: "Planning a Halloween get-together, autumn celebration, or cozy family party? Let’s bring the taco bar to your table. Reach out to discuss a menu and catering package tailored to your guest list.",
-    image: "special.jpg",
-    imageAlt: "Freshly prepared tacos with vibrant seasonal toppings",
+    // Flyer or photo for the card. Shown whole (never cropped) and opens full size when clicked.
+    // To switch months, drop the new file in /public and change the filename here.
+    //   "special-offer.jpg" = $200 deposit flyer   |   "build-menu.jpg" = Build Your Menu flyer
+    image: "special-offer.jpg",
+    imageAlt: "Special offer flyer: book any size event and pay only a $200 deposit",
     offerDetails: "Ask about a seasonal menu tailored to your gathering.",
     ctaText: "Ask About This Special",
     ctaTarget: "contact",
