@@ -23,7 +23,7 @@ export const siteConfig = {
   hero: {
     // Video file: put your video in /public/hero-video.mp4 (or change path below)
     // Supported formats: .mp4, .webm
-    videoSrc: "hero-video.mp4",
+    videoSrc: "hero-720p.mp4",
     posterImage: "hero-poster.jpg",
     title: "Chef Who Drinks Whiskey",
     subtitle: "Private Chef & Catering for Meal Preps, Weddings, Quinceañeras, Corporate Events & Intimate Gatherings",
@@ -35,7 +35,7 @@ export const siteConfig = {
   // Change the chef photo by placing an image in /public or update the URL below
   about: {
     title: "Meet The Chef",
-    image: "https://images.pexels.com/photos/4253315/pexels-photo-4253315.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: "meet-the-chef.jpg",
     paragraphs: [
       "For over a decade, Gabe has been bringing the vibrant flavors of authentic Mexican street food to events across the region. What started as a small taco stand at local farmers' markets grew into a full-service catering operation serving hundreds of events.",
       "From intimate dinners for ten to grand celebrations for five hundred, Gabe brings the same passion, quality ingredients, and attention to detail to every plate. Every tortilla is hand-pressed, every salsa made from scratch, every dish plated with care.",
