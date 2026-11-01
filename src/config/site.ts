@@ -23,7 +23,7 @@ export const siteConfig = {
   hero: {
     // Video file: put your video in /public/hero-video.mp4 (or change path below)
     // Supported formats: .mp4, .webm
-    videoSrc: "hero-720.mp4",
+    videoSrc: "hero-720p.mp4",
     posterImage: "hero-poster.jpg",
     title: "Chef Who Drinks Whiskey",
     subtitle: "Private Chef & Catering for Meal Preps, Weddings, Quinceañeras, Corporate Events & Intimate Gatherings",
