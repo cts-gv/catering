@@ -117,7 +117,7 @@ export const siteConfig = {
     monthLabel: "October • Fall Gatherings",
     title: "Make Your Fall Gathering Delicious",
     description: "Planning a Halloween get-together, autumn celebration, or cozy family party? Let’s bring the taco bar to your table. Reach out to discuss a menu and catering package tailored to your guest list.",
-    image: "https://images.pexels.com/photos/12983263/pexels-photo-12983263.jpeg",
+    image: "special.jpg",
     imageAlt: "Freshly prepared tacos with vibrant seasonal toppings",
     offerDetails: "Ask about a seasonal menu tailored to your gathering.",
     ctaText: "Ask About This Special",
