@@ -8,9 +8,9 @@ export const siteConfig = {
   business: {
     name: "Chef Who Drinks Whiskey",
     tagline: "Private Chef & Catering",
-    phone: "(555) 123-4567",
-    email: "hello@gabethetacoguy.com",
-    instagram: "https://instagram.com",
+    phone: "(509) 302-5032",
+    email: "gramosg23@gmail.com.com",
+    instagram: "https://instagram.com/chefwhodrinkswhiskey",
     facebook: "https://facebook.com",
     yearsInBusiness: 12,
     location: "Serving the Yakima Valley, Tri-Cities and surrounding areas",
