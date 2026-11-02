@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Play } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 
@@ -6,6 +6,11 @@ export default function About() {
   const { video } = siteConfig.about;
   const videoRef = useRef<HTMLVideoElement>(null);
   const [started, setStarted] = useState(false);
+
+  // Start the chef video at the volume set in site.ts (default half)
+  useEffect(() => {
+    if (videoRef.current) videoRef.current.volume = video.volume ?? 0.5;
+  }, [video.volume]);
 
   const handlePlay = () => {
     setStarted(true);

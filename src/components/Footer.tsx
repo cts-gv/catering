@@ -1,5 +1,6 @@
-import { Flame, Phone, Mail, Instagram, Facebook } from 'lucide-react';
+import { Flame, Instagram } from 'lucide-react';
 import { siteConfig } from '@/config/site';
+import RevealContact from './RevealContact';
 
 export default function Footer() {
   return (
@@ -15,20 +16,8 @@ export default function Footer() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 mb-6 text-sm">
-            <a
-              href={`tel:${siteConfig.business.phone}`}
-              className="flex items-center gap-2 text-white/70 hover:text-[#E8B86D] transition-colors"
-            >
-              <Phone className="w-4 h-4" />
-              {siteConfig.business.phone}
-            </a>
-            <a
-              href={`mailto:${siteConfig.business.email}`}
-              className="flex items-center gap-2 text-white/70 hover:text-[#E8B86D] transition-colors"
-            >
-              <Mail className="w-4 h-4" />
-              {siteConfig.business.email}
-            </a>
+            <RevealContact type="phone" className="text-white/70 hover:text-[#E8B86D] transition-colors" />
+            <RevealContact type="email" className="text-white/70 hover:text-[#E8B86D] transition-colors" />
           </div>
 
           <div className="flex gap-4 mb-6">
@@ -40,15 +29,6 @@ export default function Footer() {
               aria-label="Instagram"
             >
               <Instagram className="w-5 h-5 text-white" />
-            </a>
-            <a
-              href={siteConfig.business.facebook}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#B8742C] flex items-center justify-center transition-colors"
-              aria-label="Facebook"
-            >
-              <Facebook className="w-5 h-5 text-white" />
             </a>
           </div>
           <div className="w-full border-t border-white/10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-2">

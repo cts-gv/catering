@@ -8,10 +8,14 @@ export const siteConfig = {
   business: {
     name: "Chef Who Drinks Whiskey",
     tagline: "Private Chef & Catering",
-    phone: "(509) 302-5032",
-    email: "gramosg23@gmail.com.com",
+    // PHONE + EMAIL are stored encoded (base64) so they never appear as plain text in the
+    // page source or JavaScript bundle, and are only revealed when a visitor taps the button.
+    // To change them: open any browser console and run  btoa("new value")  then paste the result.
+    //   phone decodes to: (509) 302-5032
+    //   email decodes to: gramosg23@gmail.com
+    phoneEncoded: "KDUwOSkgMzAyLTUwMzI=",
+    emailEncoded: "Z3JhbW9zZzIzQGdtYWlsLmNvbQ==",
     instagram: "https://instagram.com/chefwhodrinkswhiskey",
-    facebook: "https://facebook.com",
     yearsInBusiness: 12,
     location: "Serving the Yakima Valley, Tri-Cities and surrounding areas",
   },
@@ -21,6 +25,9 @@ export const siteConfig = {
   // To change the hero video, just swap the file in /public or change the path below.
   // The posterImage shows before the video loads.
   hero: {
+    // IMAGE SIZE: posterImage = 1920 x 1080 px (16:9 landscape), JPG under 300 KB.
+    //   The hero fills the whole screen, so keep the subject in the CENTER (edges get cropped
+    //   on phones). Video: 1280 x 720 or 1920 x 1080, MP4, ideally under 5 MB.
     // Video file: put your video in /public/hero-video.mp4 (or change path below)
     // Supported formats: .mp4, .webm
     videoSrc: "hero-720p.mp4",
@@ -34,6 +41,10 @@ export const siteConfig = {
   // ---- ABOUT SECTION ----
   // Change the chef photo by placing an image in /public or update the URL below
   about: {
+    // IMAGE SIZE (image): 1200 x 1500 px (4:5 portrait), JPG under 250 KB.
+    //   Shown as a near-square on desktop and a taller crop on tablets, so keep the chef's face
+    //   and body in the CENTER with some room on the left and right.
+    // IMAGE SIZE (video poster): 1920 x 1080 px (16:9 landscape) - it is never cropped.
     title: "Meet The Chef",
     image: "meet-the-chef.jpg",
     paragraphs: [
@@ -45,6 +56,9 @@ export const siteConfig = {
     // Leave `src` empty ("") to hide the video block entirely.
     // `poster` is optional — the cover image shown before the visitor hits play.
     video: {
+      // Starting volume: 0 (silent) to 1 (full). 0.5 = half. Viewers can still change it.
+      // Note: iPhones/iPads ignore this and use the device volume buttons.
+      volume: 0.5,
       src: "chef-story.mp4",
       poster: "chef-story-poster.jpg",
       title: "Watch Gabe in the kitchen",
@@ -53,8 +67,13 @@ export const siteConfig = {
   },
 
   // ---- PHOTO GALLERY (bento grid) ----
-  // Exactly 5 images, placed in /public. The first image is the large feature tile,
-  // so put the strongest photo first. Update `alt` text to describe each photo.
+  // Exactly 5 images, placed in /public. Update `alt` text to describe each photo.
+  // IMAGE SIZES (match these exactly and nothing gets cropped or zoomed):
+  //   Images 1 and 2 (wide tiles):     1500 x 1000 px  (3:2 landscape)
+  //   Images 3, 4 and 5 (tall tiles):  1000 x 1250 px  (4:5 portrait)
+  //   Save as JPG, quality ~80, each under 400 KB.
+  // Photos straight from a phone are usually 4:3 or 9:16, so crop them to the shapes above
+  // first (any photo editor, or squoosh.app) and keep the main subject near the middle.
   gallery: {
     eyebrow: "Recent Work",
     heading: "A Taste of Our Events",
@@ -77,6 +96,8 @@ export const siteConfig = {
   ],
 
   // ---- EVENT PORTFOLIO ----
+  // IMAGE SIZE: 1200 x 900 px (4:3 landscape), JPG under 200 KB. Cards show a short wide
+  // window (roughly 4:3 to 3:2), so keep the food in the middle of the photo.
   // Each card showcases a type of event. Change images by updating the URL
   // or placing files in /public and referencing them as "/your-image.jpg"
   eventTypes: [
@@ -117,6 +138,8 @@ export const siteConfig = {
     monthLabel: "October • Fall Gatherings",
     title: "Make Your Fall Gathering Delicious",
     description: "Planning a Halloween get-together, autumn celebration, or cozy family party? Let’s bring the taco bar to your table. Reach out to discuss a menu and catering package tailored to your guest list.",
+    // IMAGE SIZE: 1080 x 1350 px (4:5 portrait) is ideal; flyers up to 1080 x 1920 also work.
+    //   Never cropped, so any shape fits. Keep text large enough to read on a phone. JPG under 300 KB.
     // Flyer or photo for the card. Shown whole (never cropped) and opens full size when clicked.
     // To switch months, drop the new file in /public and change the filename here.
     //   "special-offer.jpg" = $200 deposit flyer   |   "build-menu.jpg" = Build Your Menu flyer

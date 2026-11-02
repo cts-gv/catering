@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { Calendar, Users, Mail, Phone, User, MessageSquare, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
 import { siteConfig } from '@/config/site';
+import RevealContact from './RevealContact';
 
 type EventKey = keyof typeof siteConfig.quotePricing;
 
@@ -28,6 +29,8 @@ export default function ContactForm() {
   const [specialOffersConsent, setSpecialOffersConsent] = useState(false);
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
+  // Honeypot: hidden from people, filled in by bots. Real visitors never touch it.
+  const [honeypot, setHoneypot] = useState('');
 
   const limits = getLimits(form.eventType);
 
@@ -62,6 +65,11 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    // A bot filled the hidden field: pretend it worked, send nothing.
+    if (honeypot) {
+      setStatus('success');
+      return;
+    }
     if (!form.name || !form.email || !form.phone || !form.eventType || !phoneConsent || !emailConsent) {
       setStatus('error');
       setErrorMsg('Please fill in all required fields and agree to phone and email communication.');
@@ -105,6 +113,7 @@ export default function ContactForm() {
           phone_communication_consent: phoneConsent ? 'Yes' : 'No',
           email_communication_consent: emailConsent ? 'Yes' : 'No',
           special_offers_consent: specialOffersConsent ? 'Yes' : 'No',
+          _gotcha: honeypot,
           _subject: `New ${eventLabel} inquiry from ${form.name}`,
         }),
       });
@@ -175,14 +184,8 @@ export default function ContactForm() {
               </div>
 
               <div className="mt-6 space-y-3 text-sm">
-                <div className="flex items-center gap-3 text-white/70">
-                  <Phone className="w-4 h-4 text-[#E8B86D]" />
-                  <span>{siteConfig.business.phone}</span>
-                </div>
-                <div className="flex items-center gap-3 text-white/70">
-                  <Mail className="w-4 h-4 text-[#E8B86D]" />
-                  <span>{siteConfig.business.email}</span>
-                </div>
+                <RevealContact type="phone" className="text-white/70 hover:text-[#E8B86D] transition-colors" iconClassName="w-4 h-4 text-[#E8B86D]" />
+                <RevealContact type="email" className="text-white/70 hover:text-[#E8B86D] transition-colors" iconClassName="w-4 h-4 text-[#E8B86D]" />
               </div>
             </div>
           </div>
@@ -345,6 +348,20 @@ export default function ContactForm() {
                   </button>
                 </>
               )}
+                        {/* Honeypot field for spam bots - keep hidden, do not remove */}
+              <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, overflow: 'hidden' }}>
+                <label>
+                  Leave this field empty
+                  <input
+                    type="text"
+                    name="_gotcha"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </label>
+              </div>
             </form>
           </div>
         </div>
