@@ -14,6 +14,10 @@ export default function Footer() {
           <p className="text-white/60 text-sm max-w-md leading-relaxed mb-6">
             {siteConfig.footer.text}
           </p>
+          <p className="text-white/50 text-sm max-w-lg leading-relaxed mb-6">
+            Serving {siteConfig.business.serviceAreas.slice(0, -1).join(', ')} and{' '}
+            {siteConfig.business.serviceAreas[siteConfig.business.serviceAreas.length - 1]}, plus surrounding areas.
+          </p>
 
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 mb-6 text-sm">
             <RevealContact type="phone" className="text-white/70 hover:text-[#E8B86D] transition-colors" />
