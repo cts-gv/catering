@@ -17,7 +17,10 @@ export const siteConfig = {
     emailEncoded: "Z3JhbW9zZzIzQGdtYWlsLmNvbQ==",
     instagram: "https://instagram.com/chefwhodrinkswhiskey",
     yearsInBusiness: 12,
-    location: "Serving the Yakima Valley, Tri-Cities and surrounding areas",
+    location: "Serving the Yakima Valley, Tri-Cities, Walla Walla and surrounding areas",
+    // Towns shown in the footer (and mirrored in the search-engine data in index.html).
+    // Only list places you will actually travel to.
+    serviceAreas: ["Yakima", "Sunnyside", "Grandview", "Prosser", "Kennewick", "Richland", "Pasco", "Walla Walla"],
   },
 
   // ---- HERO SECTION ----
