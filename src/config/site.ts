@@ -210,6 +210,14 @@ export const siteConfig = {
     other: { label: "Other", perGuest: 24, baseFee: 150 },
   },
 
+  // ---- UNAVAILABLE DATES (greyed out in the form's date picker) ----
+  // Add one line per booked date. Write any note you like, then the date as M/D/YYYY.
+  // Only the M/D/YYYY part is used; the note is just for you. Remember the comma at the end.
+  //   Example:  "Smith Wedding 1/27/2027",
+  blockedDates: [
+    "Smith Wedding 1/27/2027",
+  ],
+
   // ---- FOOTER ----
   footer: {
     text: "Bringing authentic flavors to your special moments since 2013.",
