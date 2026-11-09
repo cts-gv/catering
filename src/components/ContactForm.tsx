@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import { Calendar, Users, Mail, Phone, User, MessageSquare, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 import RevealContact from './RevealContact';
+import DatePicker, { isDateBlocked } from './DatePicker';
 
 type EventKey = keyof typeof siteConfig.quotePricing;
 
@@ -73,6 +74,12 @@ export default function ContactForm() {
     if (!form.name || !form.email || !form.phone || !form.eventType || !phoneConsent || !emailConsent) {
       setStatus('error');
       setErrorMsg('Please fill in all required fields and agree to phone and email communication.');
+      return;
+    }
+
+    if (form.eventDate && isDateBlocked(form.eventDate)) {
+      setStatus('error');
+      setErrorMsg('Sorry, that date is already booked. Please choose another date.');
       return;
     }
 
@@ -289,13 +296,11 @@ export default function ContactForm() {
                       </div>
                     </div>
 
-                    <Field
+                    <DatePicker
                       icon={<Calendar className="w-4 h-4" />}
                       label="Event Date"
                       value={form.eventDate}
                       onChange={(v) => handleChange('eventDate', v)}
-                      placeholder=""
-                      type="date"
                     />
                   </div>
 
