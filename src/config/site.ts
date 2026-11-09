@@ -146,7 +146,7 @@ export const siteConfig = {
     // Flyer or photo for the card. Shown whole (never cropped) and opens full size when clicked.
     // To switch months, drop the new file in /public and change the filename here.
     //   "special-offer.jpg" = $200 deposit flyer   |   "build-menu.jpg" = Build Your Menu flyer
-    image: "special-offer.jpg",
+    image: "flash-sale.jpg",
     imageAlt: "Special offer flyer: book any size event and pay only a $200 deposit",
     offerDetails: "Ask about a seasonal menu tailored to your gathering.",
     ctaText: "Ask About This Special",
